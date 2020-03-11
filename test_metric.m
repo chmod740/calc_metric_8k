@@ -8,13 +8,13 @@ function [mix_stoi, mix_pesq, mix_snr, mix_sdr, est_stoi, est_pesq, est_snr, est
   wave_est_length = length(wave_est);
   wave_min_length = min(wave_mix_length, wave_est_length);
   
-  mix_stoi = stoi(wave_clean(1:wave_min_length), wave_mix(1:wave_min_length), 2e3);
-  mix_pesq = pesq(wave_clean(1:wave_min_length), wave_mix(1:wave_min_length), 2e3);
+  mix_stoi = stoi(wave_clean(1:wave_min_length), wave_mix(1:wave_min_length), 8e3);
+  mix_pesq = pesq(wave_clean(1:wave_min_length), wave_mix(1:wave_min_length), 8e3);
   mix_snr = snr(wave_mix(1:wave_min_length), wave_clean(1:wave_min_length));
   [mix_sdr, mix_i, mix_a] = bss_eval_sources(wave_mix(1:wave_min_length)', wave_clean(1:wave_min_length)');
   
-  est_stoi = stoi(wave_clean(1:wave_min_length), wave_est(1:wave_min_length), 16e3);
-  est_pesq = pesq(wave_clean(1:wave_min_length), wave_est(1:wave_min_length), 16e3);
+  est_stoi = stoi(wave_clean(1:wave_min_length), wave_est(1:wave_min_length), 8e3);
+  est_pesq = pesq(wave_clean(1:wave_min_length), wave_est(1:wave_min_length), 8e3);
   est_snr = snr(wave_est(1:wave_min_length), wave_clean(1:wave_min_length));
   [est_sdr, est_i, est_a] = bss_eval_sources(wave_est(1:wave_min_length)', wave_clean(1:wave_min_length)');
   
